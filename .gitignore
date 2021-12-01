@@ -159,3 +159,6 @@ gradle-app.setting
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains,gradle,kotlin
+
+### AoC Input Files ###
+app/src/main/resources/input
