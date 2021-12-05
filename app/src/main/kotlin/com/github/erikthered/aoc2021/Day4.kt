@@ -14,22 +14,20 @@ fun main() {
             }.toTypedArray()
         }
 
+    var part1Complete = false
+
     game@for (draw in draws) {
         boards = boards.map { board -> updateForRound(board, draw) }
         for((idx, board) in boards.withIndex()) {
-            if(board.isWinner()) {
-                println("Board $idx is the winner")
-                println("Score ${board.getScore(draw)}")
-                break@game
+            if(!part1Complete && board.isWinner()) {
+                println("Board $idx is the first winner")
+                println("Part 1: Score ${board.getScore(draw)}")
+                part1Complete = true
             }
         }
-    }
-
-    game2@for (draw in draws) {
-        boards = boards.map { board -> updateForRound(board, draw) }
         if(boards.size == 1 && boards.single().isWinner()) {
             println("Part 2: Score ${boards.single().getScore(draw)}")
-            break@game2
+            break@game
         }
         boards = boards.filter { !it.isWinner() }
     }
